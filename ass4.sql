@@ -13,8 +13,8 @@
 
 
 -- Dumping database structure for user
-CREATE DATABASE IF NOT EXISTS `user` /*!40100 DEFAULT CHARACTER SET latin1 */;
-USE `user`;
+CREATE DATABASE IF NOT EXISTS `marina` /*!40100 DEFAULT CHARACTER SET latin1 */;
+USE `marina`;
 
 -- Dumping structure for table user.photo
 CREATE TABLE IF NOT EXISTS `boat` (
