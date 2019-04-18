@@ -80,5 +80,6 @@ if(isset($_FILES['boatImageCreate']) && isset($_POST["boatNameCreate"]) ){
         print_r($errors);
     }
 }
+require_once("footer.php");
 ?>
 

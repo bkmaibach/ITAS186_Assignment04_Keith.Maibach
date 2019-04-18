@@ -63,6 +63,8 @@ foreach ($boats as $boat) {
 }
 echo "</table>";
 echo "<br>";
+require_once("footer.php");
+?>
 
 
 

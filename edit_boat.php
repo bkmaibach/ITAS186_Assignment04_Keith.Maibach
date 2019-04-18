@@ -63,4 +63,5 @@ if(isset($_POST["boatNameEdit"]) ){
     $boat->save();
     echo "<br>Success";
 }
+require_once("footer.php");
 ?>

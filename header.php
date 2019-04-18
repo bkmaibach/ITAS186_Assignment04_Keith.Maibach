@@ -18,7 +18,7 @@
             <li><a href='index.php'>[ BOAT LIST ]</a></li>
             <li><a href='add_boat.php'>[ NEW BOAT ]</a></li>
             <li><a href='add_user.php'>[ NEW USER ]</a></li>
-            <li><a href='delete_user.php'>[ DELETE USER ]</a></li>
+
         </ul>
     </div>
 </nav>

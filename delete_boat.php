@@ -14,3 +14,5 @@ if (isset($_GET["id"])) {
     $boatToDelete = Boat::find($id);
     $boatToDelete->delete();
 }
+
+require_once("footer.php");

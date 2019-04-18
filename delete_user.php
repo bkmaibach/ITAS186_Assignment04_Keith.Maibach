@@ -14,3 +14,5 @@ if (isset($_GET["id"])) {
     $userToDelete = User::find($id);
     $userToDelete->delete();
 }
+
+require_once("footer.php");

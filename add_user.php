@@ -59,3 +59,5 @@ if (isset($_POST["usernameUserCreate"])) {
     $user->setAddress($address);
     $user->save();
 }
+require_once("footer.php");
+?>
