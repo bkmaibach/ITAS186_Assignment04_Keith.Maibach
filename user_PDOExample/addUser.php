@@ -1,9 +1,9 @@
 <?php
-require_once('User.php');
+require_once('User2.php');
 
 if (isset($_POST['name'])) {
 	$name = $_POST['name'];
-	$user = new User();
+	$user = new User2();
 	$user->setFirstName($name);
 	$user->save();
 	

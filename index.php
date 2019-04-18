@@ -6,7 +6,7 @@
  */
 
 require_once("Boat.php");
-require_once("Owner.php");
+require_once("User.php");
 require_once("Database.php");
 require_once("header.php");
 
@@ -34,13 +34,13 @@ echo "</tr>";
 
 foreach ($boats as $boat) {
     // var_dump($boat);
-    $owner = Owner::find($boat->getOwnerId());
+    $user = User::find($boat->getUserId());
 
     echo "<tr>";
     echo "<td>" . $boat->getName() . "</td>";
-    echo "<td>" . $boat->getRegNum() . "</td>";
+    echo "<td>" . $boat->getRegNumber() . "</td>";
     echo "<td>" . $boat->getLength() . "</td>";
-    echo "<td>" . $owner->getFirstName() . " " . $owner->getLastName() . "</td>";
+    echo "<td>" . $user->getFirstName() . " " . $user->getLastName() . "</td>";
 
     // The list view for boats only needs to show the first photo (or none)
     $photo = $boat->getImage();

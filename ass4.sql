@@ -21,7 +21,7 @@ CREATE TABLE IF NOT EXISTS `boat` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(50) DEFAULT '0',
   `reg_number` varchar(50) DEFAULT '0',
-  `length` decimal(3,2) DEFAULT '0',
+  `length` decimal(4,2) DEFAULT '0',
   `image` varchar(50) DEFAULT '0',
   `user_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),

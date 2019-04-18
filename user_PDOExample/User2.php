@@ -16,7 +16,7 @@ require_once("Database.php");
  * User class implements ActiveRecord for all basic CRUD applications.
  * croftd: TODO - complete delete functionality
  */
-class User implements ActiveRecord {
+class User2 implements ActiveRecord {
 	
 	private $id;
 	private $name;
@@ -39,7 +39,7 @@ class User implements ActiveRecord {
 			// to UPDATE or INSERT
 	    	$result = $db->query("SELECT * FROM user WHERE id=$id");
 	    	if ($result->rowCount() > 0) {
-	    		$user = new User();
+	    		$user = new User2();
 
 	    		$row = $result->fetch(PDO::FETCH_OBJ);
 	    		$user->setId($row->id);

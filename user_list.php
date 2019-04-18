@@ -3,7 +3,7 @@
 require_once('User.php');
 require_once('Boat.php');
 require_once("header.php");
-$users = User::findAll();
+$users = User2::findAll();
 //var_dump($users);
 echo "<table>";
 foreach($users as $user)
@@ -71,7 +71,7 @@ echo "<br><br>";
 if (isset($_POST["nameCreate"])) {
     $nameCreate = $_POST["nameCreate"];
     echo "<br>Creating new User $nameCreate<br>";
-    $user = new User();
+    $user = new User2();
     $user->setFirstName($nameCreate);
     $user->save();
 }
@@ -79,7 +79,7 @@ if (isset($_POST["nameCreate"])) {
 if (isset($_POST["idRead"])) {
     $idRead = $_POST["idRead"];
     echo "<br>Reading User $idRead<br>";
-    $user = User::find($idRead);
+    $user = User2::find($idRead);
     if ($user) {
         echo $user->getId() . ' ' . $user->getFirstName();
     } else {
@@ -91,7 +91,7 @@ if (isset($_POST["idUpdate"]) && isset($_POST["nameUpdate"])) {
     $idUpdate = $_POST["idUpdate"];
     $nameUpdate = $_POST["nameUpdate"];
     echo "<br>Updating User $idUpdate<br>";
-    $user = User::find($idUpdate);
+    $user = User2::find($idUpdate);
     //var_dump($user);
     $user->setFirstName($nameUpdate);
     $user->save();
@@ -100,7 +100,7 @@ if (isset($_POST["idUpdate"]) && isset($_POST["nameUpdate"])) {
 if (isset($_POST["idDelete"])) {
     $idDelete = $_POST["idDelete"];
     echo "<br>Deleting User $idDelete<br>";
-    $user = User::find($idDelete);
+    $user = User2::find($idDelete);
     if($user) {
         $user->delete();
     } else {
@@ -145,7 +145,7 @@ if(isset($_FILES['image']) && isset($_POST["idUserUpload"]) ){
 if (isset($_POST["idUserPhotos"])) {
     $idUserPhotos = $_POST["idUserPhotos"];
     echo "<br>Getting photos for User $idUserPhotos<br>";
-    $user = User::find($idUserPhotos);
+    $user = User2::find($idUserPhotos);
     if ($user) {
         $photos = $user->getBoats();
         foreach($photos as $boat){

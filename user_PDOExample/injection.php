@@ -20,8 +20,8 @@ $pdo = Database::connect();
 
 <?php
 
-if($_POST['user']){
-    $user = $_POST['user'];
+if($_POST['User2']){
+    $user = $_POST['User2'];
     $pass = $_POST['password'];
 
     // use this in user input
@@ -30,11 +30,11 @@ if($_POST['user']){
     // https://stackoverflow.com/questions/15758185/php-mysql-injection-example
 
     echo "<br>RAW username: <u>" . $user . "</u>";
-    $user = filter_var($_POST['user'], FILTER_SANITIZE_STRING);
+    $user = filter_var($_POST['User2'], FILTER_SANITIZE_STRING);
     echo "<br>NEW username: <u>" . $user . "</u>";
 
     // NOTE this function removes special html tags only
-    $user2 = htmlspecialchars($_POST['user']);
+    $user2 = htmlspecialchars($_POST['User2']);
 
     // trying to inject something like
     // $sql = "select * from user where name='1' OR 1 LIMIT 1; -- and password='$pass'"'

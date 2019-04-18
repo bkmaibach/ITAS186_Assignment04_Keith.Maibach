@@ -1,7 +1,7 @@
 <?php
 // user_list.php
 
-require_once('User.php');
+require_once('User2.php');
 
 try {
 
@@ -11,7 +11,7 @@ try {
 	$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 	$results = $db->query('SELECT * FROM user'); 
-	$users = $results->fetchAll(PDO::FETCH_CLASS, 'User');
+	$users = $results->fetchAll(PDO::FETCH_CLASS, 'User2');
 
 	foreach($users as $user)
 	{ 
@@ -29,7 +29,7 @@ try {
 }
 
 // Test updating an existing user
-$user2 = new User();
+$user2 = new User2();
 $user2->setId(9);
 $user2->setFirstName('Bob');
 $user2->save();
