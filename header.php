@@ -18,7 +18,13 @@
             <li><a href='index.php'>[ BOAT LIST ]</a></li>
             <li><a href='add_boat.php'>[ NEW BOAT ]</a></li>
             <li><a href='add_user.php'>[ NEW USER ]</a></li>
-
+            <?php
+                if (!isset($_SESSION['username'])) {
+                    echo "<li><a href='login.php'>[ LOG IN ]</a></li>";
+                } else {
+                    echo "<li><a href='logout.php'>[ LOG OUT ]</a></li>";
+                }
+            ?>
         </ul>
     </div>
 </nav>

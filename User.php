@@ -116,6 +116,29 @@ class User implements ActiveRecord
         }
     }
 
+    /**
+     * Function to check if a user with given username and password exists
+     */
+    public static function checkUser($username, $password) {
+        try {
+            $pdo = Database::connect();
+
+            // we are using md5 to hash the password - note this is still not
+            // very secure but still better than plain text
+            $md5Password = md5($password);
+            // check to see if this user already exists to decide if we are going
+            // to UPDATE or INSERT
+            $result = $pdo->query("SELECT * FROM user WHERE username='$username' AND password='$md5Password'");
+            if ($result->rowCount() > 0) {
+                $user = $result->fetchAll(PDO::FETCH_CLASS, 'User')[0];
+                //var_dump($user);
+                return $user;
+            }
+
+        } catch (PDOException $e) {
+            echo "<br>Error checking username and password combo: " . $e->getMessage();
+        }
+    }
 
     /**
      * @return mixed

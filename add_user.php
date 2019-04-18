@@ -43,6 +43,7 @@ require_once("header.php");
 if (isset($_POST["usernameUserCreate"])) {
     $username = filter_var($_POST["usernameUserCreate"], FILTER_SANITIZE_STRING);
     $password = filter_var($_POST["passwordUserCreate"], FILTER_SANITIZE_STRING);
+    $hash = md5($password);
     $userType = filter_var($_POST["userTypeUserCreate"], FILTER_SANITIZE_NUMBER_INT);
     $firstName = filter_var($_POST["firstNameUserCreate"], FILTER_SANITIZE_STRING);
     $lastName = filter_var($_POST["lastNameUserCreate"], FILTER_SANITIZE_STRING);
@@ -51,7 +52,7 @@ if (isset($_POST["usernameUserCreate"])) {
     echo "<br>Creating new user $username<br>";
     $user = new User();
     $user->setUsername($username);
-    $user->setPassword($password);
+    $user->setPassword($hash);
     $user->setUserType($userType);
     $user->setFirstName($firstName);
     $user->setLastName($lastName);

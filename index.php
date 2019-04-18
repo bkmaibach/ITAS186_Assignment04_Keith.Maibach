@@ -10,11 +10,17 @@ require_once("User.php");
 require_once("Database.php");
 require_once("header.php");
 
-// Start a session to maintain program state between requests
-session_start();
-
 // include the header.php on all pages
 require_once("header.php");
+
+// Start a session to maintain program state between requests
+session_start();
+// check if the user is logged in
+if (!isset($_SESSION['username'])) {
+    echo "Sorry you will need to login first, please click here to login: ";
+    echo "<a href='login.php'> Login Page</a>";
+    exit();
+}
 
 $db = Database::connect();
 
