@@ -27,7 +27,7 @@ class Database {
 
         if (!self::$connection) {
             try {
-                self::$connection = new PDO("mysql:host=localhost;dbname=user", "root", "");
+                self::$connection = new PDO("mysql:host=localhost;dbname=marina", "root", "");
                 // this is important to have the DB show errors!!
                 //
                 self::$connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);

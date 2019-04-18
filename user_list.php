@@ -2,13 +2,18 @@
 // user_list.php
 require_once('User.php');
 require_once('Boat.php');
+require_once("header.php");
 $users = User::findAll();
 //var_dump($users);
+echo "<table>";
 foreach($users as $user)
 {
     //var_dump($user);
-    echo '<br>' . $user->getId() . ' ' . $user->getName();
+    echo '<tr>';
+    echo '<td>' . $user->getId() . ' </td><td> ' . $user->getFirstName()  . ' </td><td> ' . $user->getLastName()  . ' </td><td> ' . $user->getAddress()   . ' </td><td> ' . $user->getPhone() . '</td>';
+    echo '</tr>';
 }
+echo "</table>";
 echo "<br><br>";
 
 ?>
@@ -127,10 +132,10 @@ if(isset($_FILES['image']) && isset($_POST["idUserUpload"]) ){
 
     if(empty($errors)==true){
         move_uploaded_file($file_tmp,"images/".$file_name);
-        $photo = new Boat();
-        $photo->setImage($file_name);
-        $photo->setUserId($userId);
-        $photo->save();
+        $boat = new Boat();
+        $boat->setImage($file_name);
+        $boat->setUserId($userId);
+        $boat->save();
         echo "<br>Success";
     }else{
         print_r($errors);
@@ -142,10 +147,10 @@ if (isset($_POST["idUserPhotos"])) {
     echo "<br>Getting photos for User $idUserPhotos<br>";
     $user = User::find($idUserPhotos);
     if ($user) {
-        $photos = $user->getPhotos();
-        foreach($photos as $photo){
+        $photos = $user->getBoats();
+        foreach($photos as $boat){
             //var_dump($photos);
-            $filename = $photo->getImage();
+            $filename = $boat->getImage();
             echo "<br><img src=\"images/$filename\" alt=\"User image\">";
         }
     } else {

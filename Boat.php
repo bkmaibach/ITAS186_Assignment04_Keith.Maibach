@@ -6,6 +6,9 @@ require_once("ActiveRecord.php");
 class Boat implements ActiveRecord
 {
     protected $id;
+    protected $name;
+    protected $reg_number;
+    protected $length;
     protected $image;
     protected $user_id;
 
@@ -16,33 +19,38 @@ class Boat implements ActiveRecord
     public static function find($id){
         try {
             $pdo = Database::connect();
-            $result = $pdo->query("SELECT * FROM photo WHERE id=$id");
+            $result = $pdo->query("SELECT * FROM boat WHERE id=$id");
             if ($result->rowCount() > 0) {
-                $photo = $result->fetchAll(PDO::FETCH_CLASS, "Photo");
-                return $photo[0];
+                $boat = $result->fetchAll(PDO::FETCH_CLASS, "Boat");
+                return $boat[0];
             }
         } catch (PDOException $e) {
-            echo "<br>Error retrieving photo id $id: " . $e->getMessage();
+            echo "<br>Error retrieving boat id $id: " . $e->getMessage();
         }
     }
 
     public static function findAll(){
         try {
             $pdo = Database::connect();
-            $result = $pdo->query("SELECT * FROM user");
-            $photo = $result->fetchAll(PDO::FETCH_CLASS, "Photo");
-            return $photo;
+            $result = $pdo->query("SELECT * FROM boat");
+            $boat = $result->fetchAll(PDO::FETCH_CLASS, "Boat");
+            return $boat;
         } catch (PDOException $e) {
-            echo "<br>Error retrieving photo: " . $e->getMessage();
+            echo "<br>Error retrieving boat: " . $e->getMessage();
         }
     }
 
     public function save()
     {
         $pdo = Database::connect();
-        $id = $this->id;
-        $image = $this->image;
-        $user_id = $this->user_id;
+
+        $id = $this->getId();
+        $name = $this->getName();
+        $regNumber = $this->getRegNumber();
+        $length = $this->getLength();
+        $image = $this->getImage();
+        $userId = $this->getUserId();
+
         if ($id == null) {
             $id = "null";
         }
@@ -50,19 +58,25 @@ class Boat implements ActiveRecord
 
         if (!$result || $id == "null") {
             echo "<br>ID $id does not exist so inserting new row";
-            $pdo->query("INSERT INTO photo (image, user_id) VALUES ('$image', '$user_id')");
+            $pdo->query("INSERT INTO `boat` (name, reg_number, length, image, user_id)
+              VALUES ('$name', '$regNumber', '$length', '$image', '$userId')");
         } else {
             echo "<br>ID $id does exist so updating row";
-            $pdo->exec("UPDATE photo SET image='$image', user_id='$user_id' WHERE id=$id");
+            $pdo->exec("UPDATE boat
+              SET name='$name',
+                  reg_number='$regNumber',
+                  length='$length',
+                  image='$image', 
+                  user_id='$userId'
+              WHERE id=$id");
         }
-        $pdo = null;
     }
 
 
     public function delete(){
         try {
             $pdo = Database::connect();
-            $sql = "DELETE FROM `user` WHERE id = (:id)";
+            $sql = "DELETE FROM `boat` WHERE id = (:id)";
             $stmt = $pdo->prepare($sql);
             $id = $this->id;
             $stmt->bindParam(':id', $id);
@@ -83,6 +97,62 @@ class Boat implements ActiveRecord
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * @param mixed $id
+     */
+    public function setId($id): void
+    {
+        $this->id = $id;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * @param mixed $name
+     */
+    public function setName($name): void
+    {
+        $this->name = $name;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getRegNumber()
+    {
+        return $this->reg_number;
+    }
+
+    /**
+     * @param mixed $reg_number
+     */
+    public function setRegNumber($reg_number): void
+    {
+        $this->reg_number = $reg_number;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getLength()
+    {
+        return $this->length;
+    }
+
+    /**
+     * @param mixed $length
+     */
+    public function setLength($length): void
+    {
+        $this->length = $length;
     }
 
     /**

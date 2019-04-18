@@ -33,6 +33,9 @@ CREATE TABLE IF NOT EXISTS `boat` (
 -- Dumping structure for table user.user
 CREATE TABLE IF NOT EXISTS `user` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
+  `username` varchar(50) DEFAULT '0',
+  `password` varchar(50) DEFAULT '0',
+  `user_type` bit DEFAULT 0,
   `first_name` varchar(50) DEFAULT '0',
   `last_name` varchar(50) DEFAULT '0',
   `address` varchar(50) DEFAULT '0',
