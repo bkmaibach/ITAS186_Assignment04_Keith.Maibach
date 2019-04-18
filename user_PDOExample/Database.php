@@ -1,7 +1,7 @@
 <?php
 // Database.php
 
-class Database {
+class Database2 {
 
        /** @var PDO connection object */
     private static $connection;

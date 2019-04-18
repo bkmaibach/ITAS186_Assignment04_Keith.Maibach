@@ -15,8 +15,10 @@
             <a class="navbar-brand" href="#">ITAS186_ASSIGNMENT04_Keith.Maibach</a>
         </div>
         <ul class="nav navbar-nav">
+            <li><a href='index.php'>[ BOAT LIST ]</a></li>
             <li><a href='add_boat.php'>[ NEW BOAT ]</a></li>
-            <li><a href='add_owner.php'>[ NEW OWNER ]</a></li>
+            <li><a href='add_user.php'>[ NEW USER ]</a></li>
+            <li><a href='delete_user.php'>[ DELETE USER ]</a></li>
         </ul>
     </div>
 </nav>

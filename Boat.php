@@ -54,7 +54,7 @@ class Boat implements ActiveRecord
         if ($id == null) {
             $id = "null";
         }
-        $result = $pdo->query("SELECT * FROM `photo` WHERE id=$id");
+        $result = $pdo->query("SELECT * FROM `boat` WHERE id=$id");
 
         if (!$result || $id == "null") {
             echo "<br>ID $id does not exist so inserting new row";
@@ -81,13 +81,13 @@ class Boat implements ActiveRecord
             $id = $this->id;
             $stmt->bindParam(':id', $id);
             if ($stmt->execute()) {
-                echo "<p>Deleted Photo from user using PDO</p>";
+                echo "<p>Deleted boat from user using PDO</p>";
             } else {
                 print_r($stmt->errorInfo());
             }
 
         } catch (PDOException $e) {
-            echo "<br>Error deleting photo: " . $e->getMessage();
+            echo "<br>Error deleting boat: " . $e->getMessage();
         }
     }
 

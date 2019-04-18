@@ -3,7 +3,7 @@
 require_once('User.php');
 require_once('Boat.php');
 require_once("header.php");
-$users = User2::findAll();
+$users = User::findAll();
 //var_dump($users);
 echo "<table>";
 foreach($users as $user)
@@ -18,12 +18,7 @@ echo "<br><br>";
 
 ?>
 
-<form action="" method="POST">
-    <label for="nameCreate">Name:</label>
-    <input type="text" name="nameCreate"><br>
-    <label for="submitCreate">Create:</label>
-    <input type="submit" name="submitCreate"><br><br>
-</form>
+
 
 <form action="" method="POST">
     <label for="idRead">ID:</label>
@@ -71,7 +66,7 @@ echo "<br><br>";
 if (isset($_POST["nameCreate"])) {
     $nameCreate = $_POST["nameCreate"];
     echo "<br>Creating new User $nameCreate<br>";
-    $user = new User2();
+    $user = new User();
     $user->setFirstName($nameCreate);
     $user->save();
 }
@@ -79,7 +74,7 @@ if (isset($_POST["nameCreate"])) {
 if (isset($_POST["idRead"])) {
     $idRead = $_POST["idRead"];
     echo "<br>Reading User $idRead<br>";
-    $user = User2::find($idRead);
+    $user = User::find($idRead);
     if ($user) {
         echo $user->getId() . ' ' . $user->getFirstName();
     } else {
@@ -91,7 +86,7 @@ if (isset($_POST["idUpdate"]) && isset($_POST["nameUpdate"])) {
     $idUpdate = $_POST["idUpdate"];
     $nameUpdate = $_POST["nameUpdate"];
     echo "<br>Updating User $idUpdate<br>";
-    $user = User2::find($idUpdate);
+    $user = User::find($idUpdate);
     //var_dump($user);
     $user->setFirstName($nameUpdate);
     $user->save();
@@ -100,7 +95,7 @@ if (isset($_POST["idUpdate"]) && isset($_POST["nameUpdate"])) {
 if (isset($_POST["idDelete"])) {
     $idDelete = $_POST["idDelete"];
     echo "<br>Deleting User $idDelete<br>";
-    $user = User2::find($idDelete);
+    $user = User::find($idDelete);
     if($user) {
         $user->delete();
     } else {
@@ -145,7 +140,7 @@ if(isset($_FILES['image']) && isset($_POST["idUserUpload"]) ){
 if (isset($_POST["idUserPhotos"])) {
     $idUserPhotos = $_POST["idUserPhotos"];
     echo "<br>Getting photos for User $idUserPhotos<br>";
-    $user = User2::find($idUserPhotos);
+    $user = User::find($idUserPhotos);
     if ($user) {
         $photos = $user->getBoats();
         foreach($photos as $boat){

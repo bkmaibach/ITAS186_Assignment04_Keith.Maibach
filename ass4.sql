@@ -12,36 +12,36 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 
 
--- Dumping database structure for user
+-- Dumping database structure for marina
 CREATE DATABASE IF NOT EXISTS `marina` /*!40100 DEFAULT CHARACTER SET latin1 */;
 USE `marina`;
 
--- Dumping structure for table user.photo
+-- Dumping structure for table marina.boat
 CREATE TABLE IF NOT EXISTS `boat` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(50) DEFAULT '0',
   `reg_number` varchar(50) DEFAULT '0',
-  `length` decimal(4,2) DEFAULT '0',
+  `length` decimal(4,2) DEFAULT '0.00',
   `image` varchar(50) DEFAULT '0',
   `user_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `user_id` (`user_id`),
-  CONSTRAINT `boat_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+  CONSTRAINT `boat_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 -- Data exporting was unselected.
--- Dumping structure for table user.user
+-- Dumping structure for table marina.user
 CREATE TABLE IF NOT EXISTS `user` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `username` varchar(50) DEFAULT '0',
   `password` varchar(50) DEFAULT '0',
-  `user_type` bit DEFAULT 0,
+  `user_type` bit(1) DEFAULT b'0',
   `first_name` varchar(50) DEFAULT '0',
   `last_name` varchar(50) DEFAULT '0',
   `address` varchar(50) DEFAULT '0',
   `phone` varchar(50) DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=latin1;
 
 -- Data exporting was unselected.
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;

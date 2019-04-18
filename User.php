@@ -202,6 +202,7 @@ class User implements ActiveRecord
      */
     public function getUsername()
     {
+        // echo $this->username;
         return $this->username;
     }
 
